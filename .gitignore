@@ -3,3 +3,6 @@
 tmp
 test/s3.yml
 public
+.DS_Store
+html/*
+pkg

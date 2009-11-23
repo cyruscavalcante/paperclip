@@ -101,3 +101,12 @@ desc "Build the gem into the current directory"
 task :gem => :gemspec do
   `gem build #{spec.name}.gemspec`
 end
+
+Rake::GemPackageTask.new(spec) do |pkg|
+  pkg.gem_spec = spec
+end
+
+desc "Install the gem locally"
+task :install => [:package] do
+  sh %{sudo gem install pkg/paperclip-#{Paperclip::VERSION} --no-ri --no-rdoc}
+end
