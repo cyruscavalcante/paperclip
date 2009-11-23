@@ -236,10 +236,14 @@ module Paperclip
       define_method "#{name}?" do
         attachment_for(name).file?
       end
-
-      validates_each(name) do |record, attr, value|
-        attachment = record.attachment_for(name)
-        attachment.send(:flush_errors) unless attachment.valid?
+      
+      if self.instance_of?(ActiveRecord::Base)
+        validates_each(name) do |record, attr, value|
+          attachment = record.attachment_for(name)
+          attachment.send(:flush_errors) unless attachment.valid?
+        end
+      elsif self.instance_of?(CouchRest::Document)
+        # couchrest equivalent?
       end
     end
 
@@ -329,14 +333,22 @@ module Paperclip
     end
 
     def save_attached_files
-      logger.info("[paperclip] Saving attachments.")
+      if self.instance_of?(ActiveRecord::Base)
+        logger.info("[paperclip] Saving attachments.")
+      elsif self.instance_of?(CouchRest::Document)
+        # couchrest equivalent?
+      end
       each_attachment do |name, attachment|
         attachment.send(:save)
       end
     end
 
     def destroy_attached_files
-      logger.info("[paperclip] Deleting attachments.")
+      if self.instance_of?(ActiveRecord::Base)
+        logger.info("[paperclip] Deleting attachments.")
+      elsif self.instance_of?(CouchRest::Document)
+        # couchrest equivalent?
+      end
       each_attachment do |name, attachment|
         attachment.send(:queue_existing_for_delete)
         attachment.send(:flush_deletes)

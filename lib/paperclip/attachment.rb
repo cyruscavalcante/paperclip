@@ -371,7 +371,12 @@ module Paperclip
     end
 
     def callback which #:nodoc:
-      instance.run_callbacks(which, @queued_for_write){|result, obj| result == false }
+      if instance.instance_of?(ActiveRecord::Base)
+        instance.run_callbacks(which, @queued_for_write){|result, obj| result == false }
+      elsif instance.instance_of?(CouchRest::Document)
+        # not sure how couchrest should support this
+        return true
+      end
     end
 
     def post_process_styles #:nodoc:
