@@ -173,6 +173,17 @@ guidelines:
    It's a rare time when explicit tests aren't needed. If you have questions
    about writing tests for paperclip, please ask the mailing list.
 
+==Developing
+
+To develop Paperclip, download it, make sure the tests pass, and local install it:
+
+git clone <paperclip>
+sudo gem install jferris-mocha # test dependency
+sudo gem install ruby-debug # test dependency
+sudo gem install aws-s3 # test dependency for amazon-web-services
+cd paperclip
+rake install
+
 ==CouchRest Integration
 
 CouchDB is a fantastic Database system.  Paperclip will soon support not only ActiveRecord, but the great CouchRest ORM for CouchDB.

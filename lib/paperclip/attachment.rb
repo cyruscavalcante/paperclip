@@ -373,7 +373,7 @@ module Paperclip
     def callback which #:nodoc:
       if instance.instance_of?(ActiveRecord::Base)
         instance.run_callbacks(which, @queued_for_write){|result, obj| result == false }
-      elsif instance.instance_of?(CouchRest::Document)
+      elsif defined?(CouchRest) and instance.instance_of?(CouchRest::Document)
         # not sure how couchrest should support this
         return true
       end

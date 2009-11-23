@@ -242,7 +242,7 @@ module Paperclip
           attachment = record.attachment_for(name)
           attachment.send(:flush_errors) unless attachment.valid?
         end
-      elsif self.instance_of?(CouchRest::Document)
+      elsif defined?(CouchRest) and self.instance_of?(CouchRest::Document)
         # couchrest equivalent?
       end
     end
@@ -335,7 +335,7 @@ module Paperclip
     def save_attached_files
       if self.instance_of?(ActiveRecord::Base)
         logger.info("[paperclip] Saving attachments.")
-      elsif self.instance_of?(CouchRest::Document)
+      elsif defined?(CouchRest) and self.instance_of?(CouchRest::Document)
         # couchrest equivalent?
       end
       each_attachment do |name, attachment|
@@ -346,7 +346,7 @@ module Paperclip
     def destroy_attached_files
       if self.instance_of?(ActiveRecord::Base)
         logger.info("[paperclip] Deleting attachments.")
-      elsif self.instance_of?(CouchRest::Document)
+      elsif defined?(CouchRest) and self.instance_of?(CouchRest::Document)
         # couchrest equivalent?
       end
       each_attachment do |name, attachment|

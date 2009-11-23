@@ -2,6 +2,7 @@ require 'rubygems'
 require 'test/unit'
 require 'shoulda'
 require 'tempfile'
+require 'aws'
 
 gem 'jferris-mocha'
 require 'mocha'

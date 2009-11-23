@@ -1,5 +1,6 @@
+require 'rubygems'
 require 'test/helper'
-require 'aws/s3'
+require 'aws'
 
 class StorageTest < Test::Unit::TestCase
   def rails_env(env)
