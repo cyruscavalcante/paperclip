@@ -172,3 +172,9 @@ guidelines:
 2. Make sure there are tests! We will not accept any patch that is not tested.
    It's a rare time when explicit tests aren't needed. If you have questions
    about writing tests for paperclip, please ask the mailing list.
+
+==CouchRest Integration
+
+CouchDB is a fantastic Database system.  Paperclip will soon support not only ActiveRecord, but the great CouchRest ORM for CouchDB.
+
+Currently, it will just work without any validations.  Next is to make sure the validations work and to write some tests.
