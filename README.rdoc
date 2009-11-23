@@ -177,12 +177,12 @@ guidelines:
 
 To develop Paperclip, download it, make sure the tests pass, and local install it:
 
-git clone <paperclip>
-sudo gem install jferris-mocha # test dependency
-sudo gem install ruby-debug # test dependency
-sudo gem install aws-s3 # test dependency for amazon-web-services
-cd paperclip
-rake install
+  git clone <paperclip>
+  sudo gem install jferris-mocha # test dependency
+  sudo gem install ruby-debug # test dependency
+  sudo gem install aws-s3 # test dependency for amazon-web-services
+  cd paperclip
+  rake install
 
 ==CouchRest Integration
 
