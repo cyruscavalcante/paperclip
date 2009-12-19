@@ -52,6 +52,18 @@ module Paperclip
       normalize_style_definition
       initialize_storage
     end
+    
+    def width(style = default_style)
+      dimensions(style).width 
+    end 
+    
+    def height(style = default_style) 
+      dimensions(style).height 
+    end
+    
+    def dimensions(style = default_style)
+      Paperclip::Geometry.from_file(to_file(style))
+    end
 
     # What gets called when you call instance.attachment = File. It clears
     # errors, assigns attributes, processes the file, and runs validations. It
